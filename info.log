@@ -1,0 +1,22 @@
+2022-03-01 23:17:42,539 [INFO] Started server process [10856]
+2022-03-01 23:17:42,540 [INFO] Waiting for application startup.
+2022-03-01 23:17:42,540 [INFO] Application startup complete.
+2022-03-01 23:17:55,108 [INFO] Shutting down
+2022-03-01 23:17:55,210 [INFO] Waiting for application shutdown.
+2022-03-01 23:17:55,211 [INFO] Application shutdown complete.
+2022-03-01 23:17:55,212 [INFO] Finished server process [10856]
+2022-03-01 23:22:21,397 [INFO] Started server process [10982]
+2022-03-01 23:22:21,398 [INFO] Waiting for application startup.
+2022-03-01 23:22:21,398 [INFO] Application startup complete.
+2022-03-01 23:22:58,574 [INFO] Shutting down
+2022-03-01 23:22:58,675 [INFO] Waiting for application shutdown.
+2022-03-01 23:22:58,676 [INFO] Application shutdown complete.
+2022-03-01 23:22:58,676 [INFO] Finished server process [10982]
+2022-03-01 23:23:10,951 [INFO] Started server process [10991]
+2022-03-01 23:23:10,951 [INFO] Waiting for application startup.
+2022-03-01 23:23:10,952 [INFO] Application startup complete.
+2022-03-01 23:33:33,923 [INFO] Started server process [11274]
+2022-03-01 23:33:33,923 [INFO] Waiting for application startup.
+2022-03-01 23:33:33,924 [INFO] Application startup complete.
+2022-03-01 23:33:33,924 [INFO] Uvicorn running on http://127.0.0.1:5001 (Press CTRL+C to quit)
+2022-03-01 23:39:00,638 [INFO] 192.168.2.1:80 UDP-Flooded from 127.0.0.1 for 20 seconds
