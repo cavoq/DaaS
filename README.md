@@ -3,7 +3,7 @@
 KwcyDOSApI is an Api that povides methods for Denial-of-service attacks
 
 ## Requirements
-For this script to work, you need to have python3 installed, the other requirements within the installation process
+For this script to work, you need to have python3 installed
 
 ## Installation
 **1. Clone the repository**
