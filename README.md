@@ -29,7 +29,7 @@ docker run -e HOST=<HOST> -e PORT=<PORT> -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_N
 ```
 docker run --env-file .env -p -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
-*Note:* if you don't specify anything the default host will be set to 0.0.0.0:5000
+*Note:* if you don't specify anything the default host will be set to 0.0.0.0:5002
 
 ## Info
 
