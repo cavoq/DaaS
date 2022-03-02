@@ -3,7 +3,7 @@
 KwcyDOSApI is an Api that povides methods for Denial-of-service attacks
 
 ## Requirements
-For this script to work, you need to have Docker installed
+For this script to work, you need to have [Docker](https://www.docker.com/products/docker-desktop) installed
 
 ## Build
 **1. Clone the repository**
