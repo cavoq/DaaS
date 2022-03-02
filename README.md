@@ -17,17 +17,17 @@ cd KwcyDOSApI
 ```
 **3. Build the docker image**
 ```
-Docker build .
+docker build .
 ```
 ## Usage
 
 **Run container and specify host and port by using flags**
 ```
-Docker run -e HOST=<HOST> -e PORT=<PORT> -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
+docker run -e HOST=<HOST> -e PORT=<PORT> -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
 **Run container and specify host and port by *.env* file**
 ```
-Docker run --env-file .env -p -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
+docker run --env-file .env -p -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
 *Note:* if you don't specify anything the default host will be set to 0.0.0.0:5000
 
