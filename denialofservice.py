@@ -6,7 +6,7 @@ import threading
 import random
 import socket
 from globals import ICMP_PACKET_AMOUNT, SOCKET_COUNT
-from Log import log
+from log import log
 
 def Spoof_IP():
     return RandIP()

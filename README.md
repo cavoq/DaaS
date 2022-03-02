@@ -10,15 +10,25 @@ For this script to work, you need to have python3 installed
 ```
 git clone https://github.com/Dav3o/KwcyDOSApI.git
 ```
-**2. Install requirements**
+**2. Build**
+Go into the cloned repository
 ```
-/usr/local/bin/python3 -m pip install -r requirements.txt
+cd KwcyDOSApI
+```
+```
+Docker build .
 ```
 ## Usage
-If you are on linux, you can start the server with the following command
+You can run the container with following commands
 ```
-python3 main.py -h <HOST> -p <PORT>
+Docker run -e HOST=<HOST> -e PORT=<PORT> -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
+Or if you want to specify the Host and the Port in the .env file
+```
+Docker run --env-file .env -p -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
+```
+*note:* if you don't specify anything the default host will be set to 0.0.0.0:5000
+
 To see the API calls you can go to
 ```
 http://<HOST>:<PORT>/docs
