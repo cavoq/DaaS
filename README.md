@@ -3,31 +3,35 @@
 KwcyDOSApI is an Api that povides methods for Denial-of-service attacks
 
 ## Requirements
-For this script to work, you need to have python3 installed
+For this script to work, you need to have [Docker](https://www.docker.com/products/docker-desktop) installed
 
-## Installation
+## Build
+
 **1. Clone the repository**
 ```
 git clone https://github.com/Dav3o/KwcyDOSApI.git
 ```
-**2. Build**
-Go into the cloned repository
+**2. Go into the cloned repository**
 ```
 cd KwcyDOSApI
 ```
+**3. Build the docker image**
 ```
-Docker build .
+docker build .
 ```
 ## Usage
-You can run the container with following commands
+
+**Run container and specify host and port by using flags**
 ```
-Docker run -e HOST=<HOST> -e PORT=<PORT> -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
+docker run -e HOST=<HOST> -e PORT=<PORT> -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
-Or if you want to specify the Host and the Port in the .env file
+**Run container and specify host and port by *.env* file**
 ```
-Docker run --env-file .env -p -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
+docker run --env-file .env -p -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
-*note:* if you don't specify anything the default host will be set to 0.0.0.0:5000
+*Note:* if you don't specify anything the default host will be set to 0.0.0.0:5002
+
+## Info
 
 To see the API calls you can go to
 ```
