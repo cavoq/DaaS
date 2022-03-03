@@ -10,4 +10,4 @@ ENV PORT=5000
 
 EXPOSE $PORT
 
-CMD ["python3.9", "server.py"]
+CMD ["python3.9", "server.py", "container"]

