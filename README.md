@@ -21,16 +21,22 @@ docker build .
 ```
 ## Usage
 
+# Run with Docker
+
 **Run container and specify host and port by using flags**
 ```
 docker run -e HOST=<HOST> -e PORT=<PORT> -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
 **Run container and specify host and port by *.env* file**
 ```
-docker run --env-file .env -p -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
+docker run --env-file .env -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 ```
 *Note:* if you don't specify anything the default host will be set to 0.0.0.0:5002
 
+# Run directly on machine
+```
+Path/to/python3 server.py directly <HOST> <PORT> 
+```
 ## Info
 
 To see the API calls you can go to
