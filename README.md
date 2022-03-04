@@ -35,7 +35,7 @@ docker run --env-file .env -p <HOST_PORT>:<CONTAINER_PORT> IMAGE_NAME
 
 # Run directly on machine
 ```
-Path/to/python3 server.py directly <HOST> <PORT> 
+Path/to/python3 server.py direct <HOST> <PORT> 
 ```
 ## Info
 
