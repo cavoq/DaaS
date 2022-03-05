@@ -73,3 +73,84 @@
 2022-03-03 21:55:09,852 [INFO] Waiting for application shutdown.
 2022-03-03 21:55:09,853 [INFO] Application shutdown complete.
 2022-03-03 21:55:09,853 [INFO] Finished server process [7899]
+2022-03-05 14:13:02,581 [INFO] Started server process [8180]
+2022-03-05 14:13:02,582 [INFO] Waiting for application startup.
+2022-03-05 14:13:02,582 [INFO] Application startup complete.
+2022-03-05 14:13:02,583 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:13:51,967 [WARNING] Davidstromberger99@gmx.de EMAIL-Spam from 192.168.2.13 for 20 seconds could not be triggered
+2022-03-05 14:14:13,870 [INFO] Shutting down
+2022-03-05 14:14:13,971 [INFO] Waiting for application shutdown.
+2022-03-05 14:14:13,972 [INFO] Application shutdown complete.
+2022-03-05 14:14:13,972 [INFO] Finished server process [8180]
+2022-03-05 14:16:20,276 [INFO] Started server process [8288]
+2022-03-05 14:16:20,276 [INFO] Waiting for application startup.
+2022-03-05 14:16:20,276 [INFO] Application startup complete.
+2022-03-05 14:16:20,277 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:16:43,885 [WARNING] Davidstromberger@gmx.de EMAIL-Spam from 192.168.2.13 for 30 seconds could not be triggered
+2022-03-05 14:16:53,331 [INFO] Shutting down
+2022-03-05 14:16:53,431 [INFO] Waiting for application shutdown.
+2022-03-05 14:16:53,432 [INFO] Application shutdown complete.
+2022-03-05 14:16:53,433 [INFO] Finished server process [8288]
+2022-03-05 14:25:49,493 [INFO] Started server process [8629]
+2022-03-05 14:25:49,493 [INFO] Waiting for application startup.
+2022-03-05 14:25:49,494 [INFO] Application startup complete.
+2022-03-05 14:25:49,495 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:26:46,811 [WARNING] Davidstromberger99@gmx.de EMAIL-Spam from 192.168.2.13 for 30 seconds could not be triggered
+2022-03-05 14:29:32,390 [INFO] Shutting down
+2022-03-05 14:29:32,492 [INFO] Waiting for application shutdown.
+2022-03-05 14:29:32,493 [INFO] Application shutdown complete.
+2022-03-05 14:29:32,493 [INFO] Finished server process [8629]
+2022-03-05 14:29:34,313 [INFO] Started server process [10387]
+2022-03-05 14:29:34,314 [INFO] Waiting for application startup.
+2022-03-05 14:29:34,314 [INFO] Application startup complete.
+2022-03-05 14:29:34,315 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:30:05,788 [WARNING] Davidstromberger99@gmx.de EMAIL-Spam from 192.168.2.13 for 30 seconds could not be triggered
+2022-03-05 14:30:21,059 [INFO] Shutting down
+2022-03-05 14:30:21,161 [INFO] Waiting for application shutdown.
+2022-03-05 14:30:21,161 [INFO] Application shutdown complete.
+2022-03-05 14:30:21,162 [INFO] Finished server process [10387]
+2022-03-05 14:30:37,768 [INFO] Started server process [10423]
+2022-03-05 14:30:37,768 [INFO] Waiting for application startup.
+2022-03-05 14:30:37,769 [INFO] Application startup complete.
+2022-03-05 14:30:37,769 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:30:43,187 [WARNING] Davidstromberger99@gmx.de EMAIL-Spam from 192.168.2.13 for 30 seconds could not be triggered
+2022-03-05 14:31:33,597 [INFO] Shutting down
+2022-03-05 14:31:33,698 [INFO] Waiting for application shutdown.
+2022-03-05 14:31:33,698 [INFO] Application shutdown complete.
+2022-03-05 14:31:33,698 [INFO] Finished server process [10423]
+2022-03-05 14:31:35,779 [INFO] Started server process [10502]
+2022-03-05 14:31:35,780 [INFO] Waiting for application startup.
+2022-03-05 14:31:35,781 [INFO] Application startup complete.
+2022-03-05 14:31:35,781 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:32:13,348 [INFO] Davidstromberger99@gmx.de EMAIL-Spammed from 192.168.2.13 for 30 seconds
+2022-03-05 14:32:13,353 [INFO] Shutting down
+2022-03-05 14:32:13,456 [INFO] Finished server process [10502]
+2022-03-05 14:32:13,457 [INFO] ASGI 'lifespan' protocol appears unsupported.
+2022-03-05 14:32:23,693 [INFO] Started server process [10509]
+2022-03-05 14:32:23,694 [INFO] Waiting for application startup.
+2022-03-05 14:32:23,694 [INFO] Application startup complete.
+2022-03-05 14:32:23,695 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:33:00,781 [INFO] Davidstromberger99@gmx.de EMAIL-Spammed from 192.168.2.13 for 30 seconds
+2022-03-05 14:34:41,619 [INFO] Shutting down
+2022-03-05 14:34:41,720 [INFO] Waiting for application shutdown.
+2022-03-05 14:34:41,721 [INFO] Application shutdown complete.
+2022-03-05 14:34:41,722 [INFO] Finished server process [10509]
+2022-03-05 14:34:43,653 [INFO] Started server process [10534]
+2022-03-05 14:34:43,654 [INFO] Waiting for application startup.
+2022-03-05 14:34:43,654 [INFO] Application startup complete.
+2022-03-05 14:34:43,655 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:35:19,352 [INFO] Davidstromberger99@gmx.de EMAIL-Spammed from 192.168.2.13 for 30 seconds
+2022-03-05 14:35:55,805 [INFO] Shutting down
+2022-03-05 14:35:55,905 [INFO] Waiting for application shutdown.
+2022-03-05 14:35:55,906 [INFO] Application shutdown complete.
+2022-03-05 14:35:55,907 [INFO] Finished server process [10534]
+2022-03-05 14:35:57,792 [INFO] Started server process [10546]
+2022-03-05 14:35:57,792 [INFO] Waiting for application startup.
+2022-03-05 14:35:57,793 [INFO] Application startup complete.
+2022-03-05 14:35:57,793 [INFO] Uvicorn running on http://192.168.2.13:5000 (Press CTRL+C to quit)
+2022-03-05 14:35:59,964 [INFO] Davidstromberger99@gmx.de EMAIL-Spammed from 192.168.2.13 for 30 seconds
+2022-03-05 14:36:05,760 [INFO] Davidstromberger99@gmx.de EMAIL-Spammed from 192.168.2.13 for 30 seconds
+2022-03-05 14:36:43,913 [INFO] Shutting down
+2022-03-05 14:36:44,014 [INFO] Waiting for application shutdown.
+2022-03-05 14:36:44,015 [INFO] Application shutdown complete.
+2022-03-05 14:36:44,015 [INFO] Finished server process [10546]
