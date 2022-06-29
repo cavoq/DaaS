@@ -9,11 +9,11 @@ For this script to work, you need to have [Docker](https://www.docker.com/produc
 
 **1. Clone the repository**
 ```
-git clone https://github.com/Dav3o/KwcyDOSApI.git
+git clone https://github.com/Dav3o/denialofservice-API.git
 ```
 **2. Go into the cloned repository**
 ```
-cd KwcyDOSApI
+cd denialofservice-API
 ```
 **3. Build the docker image**
 ```
