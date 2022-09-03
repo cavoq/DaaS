@@ -7,7 +7,7 @@ For this script to work, you need to have [Docker](https://www.docker.com/produc
 
 ## Usage
 
-# See *make help*
+See *make help*
 
 ![grafik](https://user-images.githubusercontent.com/61215846/188278295-4c9beae9-64f4-4639-8d78-0dfde16547a7.png)
 
