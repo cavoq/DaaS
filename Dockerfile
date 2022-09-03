@@ -1,7 +1,7 @@
 FROM python:3.9-alpine
 
-COPY . /KwcyDOSApI
-WORKDIR /KwcyDOSApI
+COPY . /denialofserviceAPI
+WORKDIR /denialofserviceAPI
 
 RUN pip install -r requirements.txt
 

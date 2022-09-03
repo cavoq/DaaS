@@ -3,6 +3,7 @@ PYTHON=python3
 HOST=0.0.0.0
 PORT=5000
 MAIN=server
+LOG_FILE=info.log
 
 
 help: ## Get help for Makefile
@@ -15,7 +16,7 @@ docker-build: ## Build docker image
 	docker build -t $(DOCKER_NAME) .
 
 docker-run: ## Run api inside docker container
-	docker run --env-file .env -p 5000:5000 $(DOCKER_NAME)
+	docker run --env-file .env -p 5000:5000 --name dos-api $(DOCKER_NAME)
 
 docker-sh: ## Shell into docker container
 	docker run -it $(DOCKER_NAME) sh
@@ -23,4 +24,7 @@ docker-sh: ## Shell into docker container
 run: ## Run api on host machine
 	$(PYTHON) $(MAIN).py direct $(HOST) $(PORT)
 
-.PHONY: help docker-build docker-run docker-sh run
+clear-log: ## Clear log file
+	@rm -f $(LOG_FILE)
+
+.PHONY: help docker-build docker-run docker-sh run clear-log
