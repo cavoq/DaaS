@@ -20,4 +20,4 @@ To see the API calls you can go to
 ```
 http://<HOST>:<PORT>/docs
 ```
-![Bildschirmfoto vom 2022-03-02 00-28-15](https://user-images.githubusercontent.com/61215846/156266224-636846b0-6976-4503-87db-c87cd01b46df.png)
+![Screenshot from 2023-01-07 20-05-37](https://user-images.githubusercontent.com/61215846/211166674-3ef8dd5b-fe03-41af-892a-910edf2f533e.png)
