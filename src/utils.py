@@ -1,16 +1,16 @@
 import random
+import json
 from scapy.all import RandIP
 
 
 def get_gmail_account_from_file(path: str):
-    file = open(path, "r")
-    account = file.readline()
-    password = file.readline()
-    return account, password
+    with open(path, 'r') as f:
+        data = json.load(f)
+    return data['account'], data['password']
 
 
 def spoof_ip():
-    return RandIP()
+    return str(RandIP())
 
 
 def rand_int():

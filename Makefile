@@ -19,6 +19,9 @@ install: ## Install requirements locally
 install-dev: ## Install requirements locally for development
 	sudo pip3 install -r requirements-dev.txt
 
+test: ## Run tests
+	sudo $(PYTHON) -m pytest -v
+
 docker-build: ## Build docker image
 	docker build -t $(NAME) .
 
@@ -34,4 +37,4 @@ run: ## Run api on host machine
 clear-log: ## Clear log file
 	@rm -f $(LOG_FILE)
 
-.PHONY: help docker-build docker-run docker-sh run clear-log install install-dev
+.PHONY: help docker-build docker-run docker-sh run clear-log install install-dev test

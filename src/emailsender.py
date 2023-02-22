@@ -1,5 +1,5 @@
 import smtplib, ssl
-from log import log
+from src.log import log
 
 SMTP_SERVER = "smtp.gmail.com"
 PORT = 587

