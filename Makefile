@@ -15,7 +15,10 @@ help: ## Get help for Makefile
 
 install: ## Install requirements locally
 	sudo pip3 install -r requirements.txt
-	
+
+install-dev: ## Install requirements locally for development
+	sudo pip3 install -r requirements-dev.txt
+
 docker-build: ## Build docker image
 	docker build -t $(NAME) .
 
@@ -31,4 +34,4 @@ run: ## Run api on host machine
 clear-log: ## Clear log file
 	@rm -f $(LOG_FILE)
 
-.PHONY: help docker-build docker-run docker-sh run clear-log
+.PHONY: help docker-build docker-run docker-sh run clear-log install install-dev
