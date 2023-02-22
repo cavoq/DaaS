@@ -1,15 +1,15 @@
 from fastapi import FastAPI
 from log import log
-from routers import Layer3, Layer4, Layer7
+from routers import layer3, layer4, layer7
 import uvicorn
 import os, sys
 
 
 app = FastAPI(title="denialofservice-API", version="1.0")
 
-app.include_router(Layer3.router, prefix="/Layer3", tags=["Layer3"])
-app.include_router(Layer4.router, prefix="/Layer4", tags=["Layer4"])
-app.include_router(Layer7.router, prefix="/Layer7", tags=["Layer7"])
+app.include_router(layer3.router, prefix="/layer3", tags=["layer3"])
+app.include_router(layer4.router, prefix="/layer4", tags=["layer4"])
+app.include_router(layer7.router, prefix="/layer7", tags=["layer7"])
 
 def start(host: str, port: int):
     uvicorn.run("server:app", host=host, port=port, log_level="info")
