@@ -1,6 +1,6 @@
 from base64 import encode
 from fastapi import APIRouter, Request
-from denialofservice import Layer4
+from denialofservice.layer4 import Layer4
 from globals import NUMBER_OF_THREADS
 from threading import Thread
 from log import log

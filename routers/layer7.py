@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request
-from denialofservice import Layer7
+from denialofservice.layer7 import Layer7
 from globals import NUMBER_OF_THREADS
 from threading import Thread
 from log import log
