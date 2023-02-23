@@ -20,7 +20,7 @@ install-dev: ## Install requirements locally for development
 	sudo pip3 install -r requirements-dev.txt
 
 test: ## Run tests
-	sudo $(PYTHON) -m pytest -v
+	sudo $(PYTHON) -m pytest tests/
 
 docker-build: ## Build docker image
 	docker build -t $(NAME) .

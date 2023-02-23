@@ -1,8 +1,8 @@
+from src.denialofservice.layer7 import Layer7
 import threading
 import time
 import unittest
 from scapy.all import *
-from src.denialofservice.layer7 import Layer7
 
 
 TEST_DOMAIN = "www.google.com"
