@@ -4,7 +4,7 @@ HOST=0.0.0.0
 PORT=5000
 MAIN=src/server
 LOG_FILE=info.log
-VERSION=1.0.1
+VERSION=1.1.0
 
 
 help: ## Get help for Makefile
