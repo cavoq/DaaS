@@ -2,7 +2,7 @@ NAME=denialofservice-api
 PYTHON=python3
 HOST=0.0.0.0
 PORT=5000
-MAIN=server
+MAIN=src/server
 LOG_FILE=info.log
 VERSION=1.0.1
 
@@ -32,7 +32,7 @@ docker-sh: ## Shell into docker container
 	docker run -it $(NAME) sh
 
 run: ## Run api on host machine
-	$(PYTHON) $(MAIN).py direct $(HOST) $(PORT)
+	sudo $(PYTHON) $(MAIN).py direct $(HOST) $(PORT)
 
 clear-log: ## Clear log file
 	@rm -f $(LOG_FILE)
