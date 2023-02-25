@@ -26,7 +26,7 @@ docker-build: ## Build docker image
 	docker build -t $(NAME) .
 
 docker-run: ## Run api inside docker container
-	docker run --env-file .env -p 5000:5000 --name dos-api $(NAME)
+	docker run --network=host --env-file .env -p $(PORT):$(PORT) --name denialofservice-api $(NAME)
 
 docker-sh: ## Shell into docker container
 	docker run -it $(NAME) sh
