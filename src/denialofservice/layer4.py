@@ -1,8 +1,8 @@
 from scapy.all import *
 import time as timing
-from globals import GMAIL_ACCOUNT_FILE
-from emailsender import MailSender
-from utils import spoof_ip, rand_int, get_gmail_account_from_file
+from src.globals import GMAIL_ACCOUNT_FILE
+from src.emailsender import MailSender
+from src.utils import spoof_ip, rand_int, get_gmail_account_from_file
 
 
 class Layer4:

@@ -4,7 +4,7 @@ import requests
 import json
 import random
 import socket
-from globals import SOCKET_COUNT
+from src.globals import SOCKET_COUNT
 
 
 class Layer7:

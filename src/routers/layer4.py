@@ -1,10 +1,10 @@
 from base64 import encode
 from fastapi import APIRouter, Request
-from denialofservice.layer4 import Layer4
-from globals import NUMBER_OF_THREADS
+from src.denialofservice.layer4 import Layer4
+from src.globals import NUMBER_OF_THREADS
 from threading import Thread
-from log import log
-from schemas import Layer4FloodRequest, EmailSpamRequest
+from src.log import log
+from src.schemas import Layer4FloodRequest, EmailSpamRequest
 
 layer4_router = APIRouter()
 

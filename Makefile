@@ -2,7 +2,7 @@ NAME=denialofservice-api
 PYTHON=python3
 HOST=0.0.0.0
 PORT=5000
-MAIN=src/server
+MAIN=server
 LOG_FILE=info.log
 VERSION=1.1.0
 

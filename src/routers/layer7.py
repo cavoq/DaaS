@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Request
-from denialofservice.layer7 import Layer7
-from globals import NUMBER_OF_THREADS
+from src.denialofservice.layer7 import Layer7
+from src.globals import NUMBER_OF_THREADS
 from threading import Thread
-from log import log
-from schemas import HttpGetFloodRequest, HttpPostFloodRequest, SlowlorisFloodRequest
+from src.log import log
+from src.schemas import HttpGetFloodRequest, HttpPostFloodRequest, SlowlorisFloodRequest
 
 layer7_router = APIRouter()
 

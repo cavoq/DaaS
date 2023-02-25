@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Request
-from denialofservice.layer3 import Layer3
-from globals import NUMBER_OF_THREADS
+from src.denialofservice.layer3 import Layer3
+from src.globals import NUMBER_OF_THREADS
 from threading import Thread
-from log import log
-from schemas import ICMPFloodRequest
+from src.log import log
+from src.schemas import ICMPFloodRequest
 
 layer3_router = APIRouter()
 
