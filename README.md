@@ -12,7 +12,7 @@ For this script to work, you need to have [Docker](https://www.docker.com/produc
 
 See *make help*
 
-![grafik](https://user-images.githubusercontent.com/61215846/188278295-4c9beae9-64f4-4639-8d78-0dfde16547a7.png)
+![image](https://user-images.githubusercontent.com/61215846/221359753-2306dcff-ab2a-4c3e-9d47-aa83a6bc1dc9.png)
 
 ## Info
 
@@ -20,4 +20,4 @@ To see the API calls you can go to
 ```
 http://<HOST>:<PORT>/docs
 ```
-![Screenshot from 2023-01-07 20-05-37](https://user-images.githubusercontent.com/61215846/211166674-3ef8dd5b-fe03-41af-892a-910edf2f533e.png)
+![image](https://user-images.githubusercontent.com/61215846/221359714-040caa53-5755-45d3-9e49-f9541fb47259.png)
