@@ -1,6 +1,6 @@
 # denialofservice-api
 
-denialofservice-api is an api that povides methods for denial of service attacks
+denialofservice-api is an api that povides methods for denial of service attacks.
 
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 ![version](https://img.shields.io/badge/version-1.1.0-lightgrey.svg)
