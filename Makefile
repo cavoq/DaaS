@@ -31,6 +31,9 @@ docker-run: ## Run api inside docker container
 docker-sh: ## Shell into docker container
 	docker run -it $(NAME) sh
 
+docker-remove: ## Remove docker container
+	docker rm -f $(NAME)
+	
 run: ## Run api on host machine
 	sudo $(PYTHON) $(MAIN).py direct $(HOST) $(PORT)
 
