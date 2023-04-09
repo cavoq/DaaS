@@ -3,7 +3,7 @@
 denialofservice-api is an api that povides methods for denial of service attacks.
 
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
-![version](https://img.shields.io/badge/version-1.1.0-lightgrey.svg)
+![version](https://img.shields.io/badge/version-3.0.1-lightgrey.svg)
 
 ## Requirements
 For this script to work, you need to have [Docker](https://www.docker.com/products/docker-desktop) installed
@@ -12,7 +12,7 @@ For this script to work, you need to have [Docker](https://www.docker.com/produc
 
 See *make help*
 
-![image](https://user-images.githubusercontent.com/61215846/221359753-2306dcff-ab2a-4c3e-9d47-aa83a6bc1dc9.png)
+![Screenshot from 2023-04-09 11-35-36](https://user-images.githubusercontent.com/61215846/230765647-14ebff7c-860a-482f-8e91-ba1607030546.png)
 
 ## Info
 
