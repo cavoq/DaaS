@@ -4,7 +4,7 @@ HOST=0.0.0.0
 PORT=5000
 MAIN=server
 LOG_DIR=logs
-VERSION=1.1.0
+VERSION=3.0.1
 CURRENT_DIR=$(shell pwd)
 
 
