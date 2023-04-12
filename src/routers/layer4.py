@@ -1,6 +1,7 @@
 """Layer 4 Router."""
 
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Depends, Request, Response
+from src.auth import verify_api_key
 from src.denialofservice.layer4 import Layer4
 from src.globals import NUMBER_OF_THREADS
 from threading import Thread
@@ -11,7 +12,7 @@ layer4_router = APIRouter()
 
 
 @layer4_router.post("/synflood")
-async def syn_flood(syn_flood: Layer4FloodRequest, request: Request):
+async def syn_flood(syn_flood: Layer4FloodRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
     try:
         for i in range(NUMBER_OF_THREADS):
             t = Thread(target=Layer4.syn_flood, args=(
@@ -27,7 +28,7 @@ async def syn_flood(syn_flood: Layer4FloodRequest, request: Request):
 
 
 @layer4_router.post("/udpflood")
-async def udp_flood(udp_flood: Layer4FloodRequest, request: Request):
+async def udp_flood(udp_flood: Layer4FloodRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
     try:
         for i in range(NUMBER_OF_THREADS):
             t = Thread(target=Layer4.udp_flood, args=(
@@ -43,7 +44,7 @@ async def udp_flood(udp_flood: Layer4FloodRequest, request: Request):
 
 
 @layer4_router.post("/emailspam")
-async def email_spam(email_spam: EmailSpamRequest, request: Request):
+async def email_spam(email_spam: EmailSpamRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
     try:
         t = Thread(target=Layer4.email_spam, args=(
             email_spam.target, email_spam.time, email_spam.message,))

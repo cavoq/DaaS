@@ -1,10 +1,9 @@
 """Main server file for denialofservice-api."""
 
 from fastapi import FastAPI
-from sqlalchemy import create_engine
 from dotenv import load_dotenv
 from src.log import log
-from src.models import Base
+from src.db import Database
 from src.routers import layer3, layer4, layer7
 import uvicorn
 import os
@@ -25,8 +24,7 @@ def setup_db():
     if database_url is None:
         log.error("No database url found")
         exit(1)
-    engine = create_engine(database_url)
-    Base.metadata.create_all(engine)
+    Database(database_url)
 
 
 def start(port: int):

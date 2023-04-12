@@ -1,17 +1,18 @@
 """Layer 3 Router."""
 
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Depends, Request, Response
 from src.denialofservice.layer3 import Layer3
 from src.globals import NUMBER_OF_THREADS
 from threading import Thread
 from src.log import log
 from src.schemas import ICMPFloodRequest
+from src.auth import verify_api_key
 
 layer3_router = APIRouter()
 
 
 @layer3_router.post("/icmpflood")
-async def icmp_flood(icmp_flood: ICMPFloodRequest, request: Request):
+async def icmp_flood(icmp_flood: ICMPFloodRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
     try:
         for i in range(NUMBER_OF_THREADS):
             t = Thread(target=Layer3.icmp_flood, args=(
