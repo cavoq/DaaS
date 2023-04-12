@@ -35,7 +35,7 @@ docker-remove: ## Remove docker container
 	docker rm -f $(NAME)
 	
 run: ## Run api on host machine
-	sudo $(PYTHON) $(MAIN).py direct $(HOST) $(PORT)
+	sudo $(PYTHON) $(MAIN).py direct $(PORT)
 
 clear-log: ## Clear log file
 	@rm -f $(LOG_FILE)

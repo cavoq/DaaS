@@ -8,11 +8,11 @@ Base = declarative_base()
 class Job(Base):
     __tablename__ = 'jobs'
     id = Column(Integer, primary_key=True)
-    layer = Column(String, required=True)
-    type = Column(String, required=True)
-    ts_start = Column(DateTime, required=True)
-    ts_end = Column(DateTime, required=True)
-    status = Column(String, required=True)
+    layer = Column(String, nullable=False)
+    type = Column(String, nullable=False)
+    ts_start = Column(DateTime, nullable=False)
+    ts_end = Column(DateTime, nullable=False)
+    status = Column(String, nullable=False)
     api_key_id = Column(Integer, ForeignKey('api_keys.id'))
     api_key = relationship("ApiKey", back_populates="jobs")
 
