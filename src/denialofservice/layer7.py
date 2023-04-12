@@ -1,4 +1,4 @@
-from scapy.all import *
+from scapy.all import logging
 import time as timing
 import requests
 import json
