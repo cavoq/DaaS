@@ -1,3 +1,5 @@
+"""This module contains the class MailSender which is used to send emails to the user."""
+
 import smtplib
 import ssl
 from src.log import log

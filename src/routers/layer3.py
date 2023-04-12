@@ -1,3 +1,5 @@
+"""Layer 3 Router."""
+
 from fastapi import APIRouter, Request, Response
 from src.denialofservice.layer3 import Layer3
 from src.globals import NUMBER_OF_THREADS

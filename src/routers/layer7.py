@@ -1,3 +1,5 @@
+"""Layer 7 Router."""
+
 from fastapi import APIRouter, Request, Response
 from src.denialofservice.layer7 import Layer7
 from src.globals import NUMBER_OF_THREADS

@@ -1,3 +1,5 @@
+"""Test Layer 4 Denial of Service attacks."""
+
 import threading
 import time
 import unittest

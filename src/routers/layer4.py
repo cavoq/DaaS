@@ -1,4 +1,5 @@
-from base64 import encode
+"""Layer 4 Router."""
+
 from fastapi import APIRouter, Request, Response
 from src.denialofservice.layer4 import Layer4
 from src.globals import NUMBER_OF_THREADS

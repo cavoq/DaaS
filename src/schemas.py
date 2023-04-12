@@ -1,3 +1,5 @@
+"""Schemas for the API requests and responses."""
+
 from pydantic import BaseModel
 
 

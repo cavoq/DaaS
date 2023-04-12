@@ -1,3 +1,5 @@
+"""Main server file for denialofservice-api."""
+
 from fastapi import FastAPI
 from sqlalchemy import create_engine
 from dotenv import load_dotenv

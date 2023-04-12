@@ -1,3 +1,5 @@
+"""Layer 3 Denial of Service attacks."""
+
 from scapy.all import IP, ICMP, send
 import time as timing
 from src.utils import spoof_ip
