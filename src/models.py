@@ -1,54 +1,79 @@
-from typing import Optional
+import json
+import uuid
+from typing import Any, Dict, Optional
 from sqlalchemy import Column, DateTime, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from src.db import Database
-from datetime import datetime
+from datetime import datetime, timedelta
 from sqlalchemy.sql import text
+from src.schemas import *
+
+base = Database.get_base()
 
 
-class Attack(Database.Base):
+class Attack(base):
     __tablename__ = 'attacks'
-    id = Column(Integer, primary_key=True)
+    attack_id = Column(String, nullable=False, primary_key=True)
     layer = Column(String, nullable=False)
     type = Column(String, nullable=False)
     ts_start = Column(DateTime, nullable=False)
     ts_end = Column(DateTime, nullable=False)
     status = Column(String, nullable=False)
-    api_key_id = Column(Integer, ForeignKey('api_keys.id'))
-    api_key = relationship("ApiKey", back_populates="attacks")
+    parameters = Column(String, nullable=False)
+    elapsed_time = Column(Integer, nullable=True)
+    api_key = Column(String, ForeignKey('api_keys.key'))
 
-    def __init__(self, layer: str, attack_type: str, api_key: str):
+    def __init__(self, layer: str, attack_type: str, time: int, api_key: str, parameters: dict):
         self.layer = layer
         self.type = attack_type
+        self.attack_id = str(uuid.uuid4())
         self.ts_start = datetime.now()
-        self.ts_end = datetime.now()
+        time_delta = timedelta(seconds=time)
+        self.ts_end = self.ts_start + time_delta
         self.status = "Pending"
-        self.api_key_id = self.get_api_key_id(api_key)
+        self.elapsed_time = 0
+        self.parameters = json.dumps(parameters)
+        self.api_key = self.get_api_key(api_key)
 
     @staticmethod
-    def get_api_key_id(api_key: str) -> Optional[int]:
+    def get_api_key(api_key: str) -> Optional['ApiKey']:
         with Database.get_session() as session:
-            result = session.execute(text('SELECT id FROM api_keys WHERE key=:api_key'), {'api_key': api_key})
-            api_key_id = result.scalar()
-        return api_key_id
+            api_key = session.query(ApiKey).filter(
+                ApiKey.key == api_key).first()
+        return api_key
 
-    def set_status(self, status: str):
-        self.status = status
+    def get_status(self) -> json:
+        return json.dumps({
+            'attack_id': self.attack_id,
+            'layer': self.layer,
+            'type': self.type,
+            'ts_start': self.ts_start.isoformat(),
+            'ts_end': self.ts_end.isoformat(),
+            'status': self.status,
+            'elapsed_time': self.elapsed_time,
+            'parameters': json.loads(self.parameters),
+        })
 
-    
+    def update_elapsed_time(self):
+        self.elapsed_time = int(
+            (datetime.now() - self.ts_start).total_seconds())
+
+    def update(self, key, value):
+        with Database.get_session() as session:
+            session.query(Attack).filter_by(attack_id=self.attack_id).update({key: value})
+            session.commit()
 
 
-class ApiKey(Database.Base):
+class ApiKey(base):
     __tablename__ = 'api_keys'
-    id = Column(Integer, primary_key=True)
-    key = Column(String, unique=True)
+    key = Column(String, unique=True, primary_key=True)
     ts_created = Column(DateTime, nullable=False)
     ts_expired = Column(DateTime, nullable=False)
-    attacks = relationship("Attack", back_populates="api_key")
+    attacks = relationship("Attack")
 
-    def __init__(self, key: str, ts_created: datetime, ts_expired: datetime):
+    def __init__(self, key: str, ts_expired: datetime):
         self.key = key
-        self.ts_created = ts_created
+        self.ts_created = datetime.now()
         self.ts_expired = ts_expired
 
     @staticmethod

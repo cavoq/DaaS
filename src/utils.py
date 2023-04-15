@@ -1,6 +1,7 @@
 import random
 import json
 from scapy.all import RandIP
+import inspect
 
 
 def get_gmail_account_from_file(path: str):

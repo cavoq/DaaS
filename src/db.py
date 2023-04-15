@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
+
 class Database:
     _instance = None
     _engine = None
@@ -17,9 +18,13 @@ class Database:
         return cls._instance
 
     @staticmethod
-    def get_session():
-        return Database()._sessionmaker()
+    def get_base() -> declarative_base:
+        return Database._base
+
+    @staticmethod
+    def get_session() -> sessionmaker:
+        return Database._sessionmaker()
 
     @staticmethod
     def close():
-        Database()._engine.dispose()
+        Database._engine.dispose()
