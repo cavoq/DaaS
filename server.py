@@ -1,5 +1,3 @@
-"""Main server file for denialofservice-api."""
-
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from src.log import log
