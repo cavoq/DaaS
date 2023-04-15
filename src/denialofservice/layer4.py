@@ -1,5 +1,3 @@
-"""Layer 4 Denial of Service attacks."""
-
 from scapy.all import IP, TCP, UDP, send
 import time as timing
 from src.globals import GMAIL_ACCOUNT_FILE

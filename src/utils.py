@@ -1,5 +1,3 @@
-"""Utils for the project."""
-
 import random
 import json
 from scapy.all import RandIP

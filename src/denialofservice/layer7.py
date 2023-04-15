@@ -1,5 +1,3 @@
-"""Layer 7 Denial of Service attacks."""
-
 from scapy.all import logging
 import time as timing
 import requests

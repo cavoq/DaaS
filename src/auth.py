@@ -1,5 +1,3 @@
-"""Module for authentication and authorization."""
-
 from fastapi import Header, HTTPException
 from datetime import datetime
 from src.db import Database

@@ -1,5 +1,3 @@
-"""Logging configuration."""
-
 import logging
 
 logging.basicConfig(

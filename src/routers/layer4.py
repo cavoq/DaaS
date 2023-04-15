@@ -1,5 +1,3 @@
-"""Layer 4 Router."""
-
 from fastapi import APIRouter, Depends, Request, Response
 from src.auth import verify_api_key
 from src.denialofservice.layer4 import Layer4

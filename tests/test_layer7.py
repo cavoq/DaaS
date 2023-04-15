@@ -1,5 +1,3 @@
-"""Test Layer 7 Denial of Service attacks."""
-
 from src.denialofservice.layer7 import Layer7
 import threading
 import time
