@@ -1,4 +1,4 @@
-NAME=DaaS
+NAME=daas
 PYTHON=python3
 PORT=5000
 MAIN=server
@@ -26,7 +26,7 @@ docker-build: ## Build docker image
 	docker build -t $(NAME) .
 
 docker-run: ## Run api inside docker container
-	docker run --network=host --env-file .env -p $(PORT):$(PORT) -v $(CURRENT_DIR)/$(LOG_DIR):/denialofserviceAPI/$(LOG_DIR) --name denialofservice-api $(NAME)
+	docker run --network=host --env-file .env -p $(PORT):$(PORT) -v $(CURRENT_DIR)/$(LOG_DIR):/DaaS/$(LOG_DIR) --name DaaS $(NAME)
 
 docker-sh: ## Shell into docker container
 	docker run -it $(NAME) sh

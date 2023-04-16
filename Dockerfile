@@ -1,7 +1,7 @@
 FROM python:3.10-alpine
 
-COPY . /denialofserviceAPI
-WORKDIR /denialofserviceAPI
+COPY . /DaaS
+WORKDIR /DaaS
 
 RUN pip install -r requirements.txt
 
