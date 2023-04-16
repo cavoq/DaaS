@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import Engine, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -14,7 +14,7 @@ class Database:
             cls._instance = super().__new__(cls)
             cls._engine = create_engine(*args, **kwargs)
             cls._base.metadata.create_all(cls._engine)
-            cls._sessionmaker = sessionmaker(bind=cls._engine)
+            cls._sessionmaker = sessionmaker(bind=cls._engine, expire_on_commit=False)
         return cls._instance
 
     @staticmethod
@@ -24,6 +24,10 @@ class Database:
     @staticmethod
     def get_session() -> sessionmaker:
         return Database._sessionmaker()
+
+    @staticmethod
+    def get_engine() -> Engine:
+        return Database._engine
 
     @staticmethod
     def close():

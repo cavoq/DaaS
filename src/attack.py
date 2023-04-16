@@ -12,7 +12,7 @@ class Attack:
         self.attack_func = attack_func
         self.attack_args = attack_args
         self.attack = AttackModel(layer, attack_type,
-                             attack_data["time"], api_key, attack_data)
+                             int(attack_data["time"]), api_key, attack_data)
 
     def start(self):
         for i in range(NUMBER_OF_THREADS):

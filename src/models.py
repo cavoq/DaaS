@@ -1,11 +1,10 @@
 import json
 import uuid
-from typing import Any, Dict, Optional
+from typing import Optional
 from sqlalchemy import Column, DateTime, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Session
 from src.db import Database
 from datetime import datetime, timedelta
-from sqlalchemy.sql import text
 from src.schemas import *
 
 base = Database.get_base()
@@ -13,7 +12,8 @@ base = Database.get_base()
 
 class Attack(base):
     __tablename__ = 'attacks'
-    attack_id = Column(String, nullable=False, primary_key=True)
+
+    attack_id = Column(String, nullable=False, primary_key=True, unique=True)
     layer = Column(String, nullable=False)
     type = Column(String, nullable=False)
     ts_start = Column(DateTime, nullable=False)
@@ -33,13 +33,14 @@ class Attack(base):
         self.status = "Pending"
         self.elapsed_time = 0
         self.parameters = json.dumps(parameters)
-        self.api_key = self.get_api_key(api_key)
+        with Database.get_session() as session:
+            self.api_key = self.get_api_key(session, api_key)
+            self.save(session)
 
     @staticmethod
-    def get_api_key(api_key: str) -> Optional['ApiKey']:
-        with Database.get_session() as session:
-            api_key = session.query(ApiKey).filter(
-                ApiKey.key == api_key).first()
+    def get_api_key(session: Session, api_key: str) -> Optional['ApiKey']:
+        api_key = session.query(ApiKey).filter(
+            ApiKey.key == api_key).first().key
         return api_key
 
     def get_status(self) -> json:
@@ -60,20 +61,26 @@ class Attack(base):
 
     def update(self, key, value):
         with Database.get_session() as session:
-            session.query(Attack).filter_by(attack_id=self.attack_id).update({key: value})
+            session.query(Attack).filter_by(
+                attack_id=self.attack_id).update({key: value})
             session.commit()
+
+    def save(self, session: Session):
+        session.add(self)
+        session.commit()
 
 
 class ApiKey(base):
     __tablename__ = 'api_keys'
+
     key = Column(String, unique=True, primary_key=True)
-    ts_created = Column(DateTime, nullable=False)
-    ts_expired = Column(DateTime, nullable=False)
+    ts_created = Column(DateTime, default=datetime.now(), nullable=False)
+    ts_expired = Column(DateTime, default=datetime.now() +
+                        timedelta(days=30), nullable=False)
     attacks = relationship("Attack")
 
-    def __init__(self, key: str, ts_expired: datetime):
-        self.key = key
-        self.ts_created = datetime.now()
+    def __init__(self, ts_expired: datetime = None):
+        self.key = str(uuid.uuid4())
         self.ts_expired = ts_expired
 
     @staticmethod
