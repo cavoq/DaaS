@@ -11,18 +11,18 @@ layer4_router = APIRouter()
 
 @layer4_router.post("/synflood")
 async def syn_flood(syn_flood: Layer4FloodRequest, request: Request, api_key_dependency: bool = Depends(verify_api_key)):
-    # try:
-    api_key = request.headers.get("api-key")
-    attack = Attack("Layer 4", "SYN-Flood", Layer4.syn_flood,
-                    api_key, json.loads(syn_flood.json()))
-    attack.start()
-    log.info(
-        f"{syn_flood.target}:{syn_flood.port} SYN-Flooded from {request.client.host} for {syn_flood.time} seconds")
-    return Response(content=attack.get_status(), media_type="application/json", status_code=200)
-    # except:
-    # log.warning(
-    #    f"{syn_flood.target}:{syn_flood.port} SYN-Flood from {request.client.host} for {syn_flood.time} seconds could not be triggered")
-    # return Response(status_code=500, content=json.dumps({"status": "SYN-Flood failed"}), media_type="application/json")
+    try:
+        api_key = request.headers.get("api-key")
+        attack = Attack("Layer 4", "SYN-Flood", Layer4.syn_flood,
+                        api_key, json.loads(syn_flood.json()))
+        attack.start()
+        log.info(
+            f"{syn_flood.target}:{syn_flood.port} SYN-Flooded from {request.client.host} for {syn_flood.time} seconds")
+        return Response(content=attack.get_status(), media_type="application/json", status_code=200)
+    except:
+        log.warning(
+            f"{syn_flood.target}:{syn_flood.port} SYN-Flood from {request.client.host} for {syn_flood.time} seconds could not be triggered")
+        return Response(status_code=500, content=json.dumps({"status": "SYN-Flood failed"}), media_type="application/json")
 
 
 @ layer4_router.post("/udpflood")
