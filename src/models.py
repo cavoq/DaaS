@@ -60,10 +60,7 @@ class Attack(base):
             (datetime.now() - self.ts_start).total_seconds())
 
     def update(self, key, value):
-        with Database.get_session() as session:
-            session.query(Attack).filter_by(
-                attack_id=self.attack_id).update({key: value})
-            session.commit()
+        setattr(self, key, value)
 
     def save(self, session: Session):
         session.add(self)
@@ -79,8 +76,9 @@ class ApiKey(base):
                         timedelta(days=30), nullable=False)
     attacks = relationship("Attack")
 
-    def __init__(self, ts_expired: datetime = None):
+    def __init__(self, ts_expired: datetime = datetime.now() + timedelta(days=30)):
         self.key = str(uuid.uuid4())
+        self.ts_created = datetime.now()
         self.ts_expired = ts_expired
 
     @staticmethod
