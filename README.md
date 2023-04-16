@@ -23,7 +23,7 @@ MOCK=0
 
 See *make help*
 
-![Screenshot from 2023-04-09 11-35-36](https://user-images.githubusercontent.com/61215846/230765647-14ebff7c-860a-482f-8e91-ba1607030546.png)
+![Screenshot from 2023-04-16 17-05-53](https://user-images.githubusercontent.com/61215846/232322016-6c2293a7-2132-40bb-931c-494dde30f0b3.png)
 
 
 ## Info
@@ -32,4 +32,6 @@ To see the API calls you can go to
 ```
 http://<HOST>:<PORT>/docs
 ```
-![image](https://user-images.githubusercontent.com/61215846/221359714-040caa53-5755-45d3-9e49-f9541fb47259.png)
+
+![Screenshot from 2023-04-16 17-04-46](https://user-images.githubusercontent.com/61215846/232322032-b34a7bee-c4e9-4fe2-abbe-74a3243e0469.png)
+
