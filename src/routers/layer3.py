@@ -4,6 +4,7 @@ from fastapi.responses import Response
 from src.denialofservice.layer3 import Layer3
 from src.attack import Attack
 from src.log import log
+from src.controllers.attack_controller import attack_controller
 from src.schemas import ICMPFloodRequest
 from src.auth import verify_api_key
 
@@ -16,6 +17,7 @@ async def icmp_flood(icmp_flood: ICMPFloodRequest, request: Request, api_key_dep
         api_key = request.headers.get("api-key")
         attack = Attack("Layer 3", "ICMP-Flood", Layer3.icmp_flood,
                         api_key, json.loads(icmp_flood.json()))
+        attack_controller.add_attack(attack)
         attack.start()
         log.info(
             f"{icmp_flood.target} ICMP-Flooded from {request.client.host} for {icmp_flood.time} seconds")

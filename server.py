@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from src.log import log
 from src.db import Database
 from src.admin_views import ApiKeyAdmin, AttackAdmin
-from src.routers import layer3, layer4, layer7
+from src.routers import layer3, layer4, layer7, attack_router
 import uvicorn
 import os
 import sys
@@ -17,6 +17,7 @@ app = FastAPI(title="denialofservice-api", version="3.0.1")
 app.include_router(layer3.layer3_router, prefix="/layer3", tags=["layer3"])
 app.include_router(layer4.layer4_router, prefix="/layer4", tags=["layer4"])
 app.include_router(layer7.layer7_router, prefix="/layer7", tags=["layer7"])
+app.include_router(attack_router.attack_router, prefix="/attacks", tags=["attacks"])
 
 if os.environ.get("MOCK") == "1":
     database_url = os.environ.get("TEST_DATABASE_URL")
