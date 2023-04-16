@@ -15,12 +15,14 @@ async def verify_api_key(api_key: str = Header(None)):
     session = Database.get_session()
 
     api_key: ApiKey = session.query(ApiKey).filter_by(key=api_key).first()
+    
+    if api_key is None:
+        raise HTTPException(status_code=401, detail="Invalid API key")
+    
     ts_created_utc = api_key.ts_created.astimezone(pytz.utc)
     ts_expired_utc = api_key.ts_expired.astimezone(pytz.utc)
 
     session.close()
-    if api_key is None:
-        raise HTTPException(status_code=401, detail="Invalid API key")
 
     if now_utc < ts_created_utc or now_utc > ts_expired_utc:
         raise HTTPException(status_code=401, detail="API key expired")

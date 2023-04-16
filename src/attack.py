@@ -22,8 +22,7 @@ class Attack:
         self.attack.update("status", "Running")
 
     def stop(self):
-        for thread in self.threads:
-            thread.join()
+        del self.threads
         self.attack.update("status", "Stopped")
 
     def update(self):

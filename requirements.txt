@@ -8,3 +8,4 @@ pydantic==1.10.7
 sqladmin==0.10.2
 anyio==3.6.2
 Jinja2==3.0.2
+pytz==2023.3 
