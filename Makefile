@@ -1,4 +1,4 @@
-NAME=denialofservice-api
+NAME=DaaS
 PYTHON=python3
 PORT=5000
 MAIN=server

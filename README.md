@@ -1,6 +1,6 @@
-# denialofservice-api
+# DaaS (Denial as a Service)
 
-denialofservice-api is an api that povides methods for denial of service attacks.
+DaaS is an api that povides methods for denial of service attacks.
 
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 ![version](https://img.shields.io/badge/version-3.0.1-lightgrey.svg)
@@ -8,11 +8,23 @@ denialofservice-api is an api that povides methods for denial of service attacks
 ## Requirements
 For this script to work, you need to have [Docker](https://www.docker.com/products/docker-desktop) installed
 
+## Setup
+
+See *.env* file
+
+```
+PORT=5000
+DATABASE_URL=sqlite:///db/denialofservice.db
+TEST_DATABASE_URL=sqlite:///db/denialofservice_test.db
+MOCK=0
+```
+
 ## Usage
 
 See *make help*
 
 ![Screenshot from 2023-04-09 11-35-36](https://user-images.githubusercontent.com/61215846/230765647-14ebff7c-860a-482f-8e91-ba1607030546.png)
+
 
 ## Info
 

@@ -12,7 +12,7 @@ import sys
 
 load_dotenv()
 
-app = FastAPI(title="denialofservice-api", version="3.0.1")
+app = FastAPI(title="DaaS", version="3.0.1")
 
 app.include_router(layer3.layer3_router, prefix="/layer3", tags=["layer3"])
 app.include_router(layer4.layer4_router, prefix="/layer4", tags=["layer4"])
