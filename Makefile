@@ -32,7 +32,7 @@ docker-sh: ## Shell into docker container
 	docker run -it $(NAME) sh
 
 docker-remove: ## Remove docker container
-	docker rm -f $(NAME)
+	docker rm -f DaaS
 	
 run: ## Run api on host machine
 	sudo $(PYTHON) $(MAIN).py direct $(PORT)

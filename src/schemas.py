@@ -21,13 +21,11 @@ class EmailSpamRequest(BaseModel):
 class HttpGetFloodRequest(BaseModel):
     target: str
     time: int
-    port: int
 
 
 class HttpPostFloodRequest(BaseModel):
     target: str
     time: int
-    port: int
     payload: str
 
 
