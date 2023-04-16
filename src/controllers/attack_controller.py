@@ -10,10 +10,17 @@ class AttackController:
         self.attacks[attack.attack.attack_id] = attack
 
     def get_attack(self, attack_id: str) -> Attack:
+        if attack_id not in self.attacks:
+            return None
+        self.attacks[attack_id].update()
         return self.attacks[attack_id]
 
-    def remove_attack(self, attack_id: str) -> None:
+    def delete_attack(self, attack_id: str) -> None:
+        if attack_id not in self.attacks:
+            return False
+        self.attacks[attack_id].delete()
         del self.attacks[attack_id]
+        return True
 
 
 attack_controller = AttackController()

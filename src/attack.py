@@ -35,3 +35,6 @@ class Attack:
     def get_status(self) -> json:
         self.attack.update_elapsed_time()
         return self.attack.get_status()
+    
+    def delete(self):
+        self.attack.delete()

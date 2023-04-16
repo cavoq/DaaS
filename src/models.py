@@ -62,6 +62,11 @@ class Attack(base):
     def update(self, key, value):
         setattr(self, key, value)
 
+    def delete(self):
+        with Database.get_session() as session:
+            session.delete(self)
+            session.commit()
+
     def save(self, session: Session):
         session.add(self)
         session.commit()
