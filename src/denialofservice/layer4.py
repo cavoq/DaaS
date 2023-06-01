@@ -1,8 +1,7 @@
 from scapy.all import IP, TCP, UDP, send
 import time as timing
-from src.globals import GMAIL_ACCOUNT_FILE
 from src.emailsender import MailSender
-from src.utils import spoof_ip, rand_int, get_gmail_account_from_file
+from src.utils import spoof_ip, rand_int, get_gmail_account_from_file, get_config
 
 
 class Layer4:
@@ -27,7 +26,7 @@ class Layer4:
     @staticmethod
     def email_spam(target: str, time: int, message: str):
         account, password = get_gmail_account_from_file(
-            GMAIL_ACCOUNT_FILE)
+            get_config()["gmail_account_file"])
         mail_sender = MailSender(account, password)
         mail_sender.connect()
         end_t = timing.time() + time

@@ -1,7 +1,7 @@
+import os
 import random
 import json
 from scapy.all import RandIP
-import inspect
 
 
 def get_gmail_account_from_file(path: str):
@@ -16,3 +16,9 @@ def spoof_ip():
 
 def rand_int():
     return random.randint(1000, 9000)
+
+
+def get_config():
+    config_path = os.environ.get("CONFIG") or "config.json"
+    with open(config_path, 'r') as config_file:
+        return json.load(config_file)

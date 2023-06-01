@@ -1,0 +1,5 @@
+{
+    "number_of_threads": 1,
+    "socket_count": 300,
+    "gmail_account_file": "gmail_account.json"
+}
