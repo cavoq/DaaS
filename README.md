@@ -1,6 +1,6 @@
 # DaaS (Denial as a Service)
 
-DaaS is an api that povides methods for denial of service attacks.
+DaaS is an API that povides methods for denial of service attacks.
 
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 ![version](https://img.shields.io/badge/version-3.0.1-lightgrey.svg)
@@ -18,6 +18,11 @@ DATABASE_URL=sqlite:///db/denialofservice.db
 TEST_DATABASE_URL=sqlite:///db/denialofservice_test.db
 MOCK=0
 ```
+
+## Setup
+
+You need to add API keys at http://<HOST>:<PORT>/admin
+
 
 ## Usage
 
