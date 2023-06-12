@@ -3,7 +3,11 @@ FROM python:3.10-alpine
 COPY . /DaaS
 WORKDIR /DaaS
 
-RUN pip install -r requirements.txt
+RUN apk add --no-cache build-base libffi-dev python3-dev
+
+RUN pip install --upgrade pip \
+    && pip install --upgrade setuptools \
+    && pip install -r requirements.txt
 
 ENV PORT=5000
 
