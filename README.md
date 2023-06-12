@@ -21,9 +21,11 @@ MOCK=0
 
 ## Setup
 
-You need to add API keys at http://<HOST>:<PORT>/admin
+You need to add API keys at the admin panel:
+  
+![image](https://github.com/cavoq/DaaS/assets/61215846/801315b9-aa15-4cf3-82ad-ebdb799c4392)
 
-
+  
 ## Usage
 
 See *make help*
