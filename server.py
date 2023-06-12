@@ -1,12 +1,9 @@
-from fastapi import Depends, FastAPI, Request, Form, security
+from fastapi import FastAPI
 from sqladmin import Admin
 from dotenv import load_dotenv
 from src.log import log
 from src.db import Database
-from src.auth import authenticate_user
 from src.admin_views import ApiKeyAdmin, AttackAdmin
-from fastapi.security import HTTPBasicCredentials, HTTPBasic
-from fastapi.responses import HTMLResponse
 from src.routers import layer3, layer4, layer7, attack_router
 import uvicorn
 import os
@@ -16,7 +13,6 @@ import sys
 load_dotenv()
 
 app = FastAPI(title="DaaS", version="3.0.1")
-security = HTTPBasic()
 
 app.include_router(layer3.layer3_router, prefix="/layer3", tags=["layer3"])
 app.include_router(layer4.layer4_router, prefix="/layer4", tags=["layer4"])
@@ -32,18 +28,6 @@ if database_url is None:
     log.error("No database url found")
     exit(1)
 Database(database_url)
-
-
-@app.post("/login")
-async def login(credentials: HTTPBasicCredentials = Depends(security)):
-    username = await authenticate_user(credentials)
-    return {"redirect": "/admin"}
-
-
-@app.get("/login", response_class=HTMLResponse)
-async def login_page(request: Request):
-    with open("resources/login.html", "r") as login_page:
-        return login_page.read()
 
 
 admin = Admin(app, Database.get_engine(), debug=True, base_url="/admin")
